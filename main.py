@@ -35,7 +35,6 @@ try:
         channel.ChangeDutyCycle(dc)
         sleep(.01)
 
-  while True:
     #make the led1 or led2 blink
       
     #LED 1 Blinks
@@ -43,7 +42,8 @@ try:
 
     #LED 2 Blinks
     GPIO.add_event_detect(in2, GPIO.RISING, callback = blinkLight(pwmLED2), bouncetime = 1000)
-
+    
+  while True:
     blinkLight(pwmLED3)
 
     #GPIO Cleanup
