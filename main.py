@@ -23,7 +23,7 @@ GPIO.setup(in2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 try:
 
-  def blinkLight(channel):
+  def blinkLight(channel, fraud):
       GPIO.setup(channel, GPIO.OUT)
       pwmLED = GPIO.PWM(channel, 100)
       pwmLED.start(0)
