@@ -27,6 +27,7 @@ try:
       GPIO.setup(channel, GPIO.OUT)
       pwmLED = GPIO.PWM(channel, 100)
       pwmLED.start(0)
+      print(channel)
       for dc in range(101):
         pwmLED.ChangeDutyCycle(dc)
         sleep(.01)
@@ -41,7 +42,6 @@ try:
 
   while True:
     blinkLight(led1, 1)
-    print('blinking')
 
     #GPIO Cleanup
 except KeyboardInterrupt:
