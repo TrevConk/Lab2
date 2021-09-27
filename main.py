@@ -45,6 +45,7 @@ try:
 
   while True:
     blinkLight(pwmLED3)
+    print('blinking')
 
     #GPIO Cleanup
 except KeyboardInterrupt:
