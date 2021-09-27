@@ -40,7 +40,7 @@ try:
   GPIO.add_event_detect(in2, GPIO.RISING, callback = partial(blinkLight, led2), bouncetime = 1000)
 
   while True:
-    blinkLight(led1)
+    blinkLight(led1, 1)
     print('blinking')
 
     #GPIO Cleanup
