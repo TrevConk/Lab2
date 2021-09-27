@@ -23,14 +23,16 @@ pwmLED1 = GPIO.PWM(led1, 1)
 pwmLED2 = GPIO.PWM(led2, 1)
 pwmLED3 = GPIO.PWM(led3, 1)
 
-while True:
-  try:
-    #make the led1 or led2 blink
-    def blinkLight(channel):
+
+def blinkLight(channel):
       channel.start(0)
       for dc in range(101):
         channel.ChangeDutyCycle(dc)
         sleep(.01)
+
+try:
+  while True:
+    #make the led1 or led2 blink
       
     #LED 1 Blinks
     GPIO.add_event_detect(in1, GPIO.RISING, callback = blinkLight(pwmLED1), bouncetime = 1000)
@@ -41,8 +43,14 @@ while True:
     blinkLight(pwmLED3)
 
     #GPIO Cleanup
-    GPIO.cleanup()
-  except KeyboardInterrupt:
+except KeyboardInterrupt:
     print('/nExiting')
-  except Exception as e:
-    print('\n'+e)
+except Exception as e:
+    print('\n'+ e)
+
+
+pwmLED1.stop()
+pwmLED2.stop()
+pwmLED3.stop()
+GPIO.cleanup()
+
