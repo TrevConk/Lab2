@@ -49,7 +49,7 @@ try:
 except KeyboardInterrupt:
     print('/nExiting')
 except Exception as e:
-    print('\n'+ e)
+    print('\n',e)
 
 
 pwmLED1.stop()
