@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 from time import sleep
+from functools import partial
 
 #Setup the input ports
 led1 = 5
@@ -38,9 +39,9 @@ try:
     #make the led1 or led2 blink
       
     #LED 1 Blinks
-  GPIO.add_event_detect(in1, GPIO.RISING, callback = blinkLight(pwmLED1), bouncetime = 1000)
+  GPIO.add_event_detect(in1, GPIO.RISING, callback = partial(blinkLight, pwmLED1), bouncetime = 1000)
     #LED 2 Blinks
-  GPIO.add_event_detect(in2, GPIO.RISING, callback = blinkLight(pwmLED2), bouncetime = 1000)
+  GPIO.add_event_detect(in2, GPIO.RISING, callback = partial(blinkLight, pwmLED2), bouncetime = 1000)
 
   while True:
     blinkLight(pwmLED3)
