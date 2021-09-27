@@ -14,16 +14,14 @@ f = 1 #frequency = 1
 GPIO.setmode(GPIO.BCM)
 
 #Setup the outputs
-GPIO.setup(led1, GPIO.OUT)
-GPIO.setup(led2, GPIO.OUT)
-GPIO.setup(led3, GPIO.OUT)
+
 
 #Setup the inputs
 GPIO.setup(in1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(in2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 #Setup the PWM For outputs
-pwmLED1 = GPIO.PWM(led1, 100)
+
 pwmLED2 = GPIO.PWM(led2, 100)
 pwmLED3 = GPIO.PWM(led3, 100)
 
@@ -31,10 +29,13 @@ pwmLED3 = GPIO.PWM(led3, 100)
 try:
 
   def blinkLight(channel):
-      channel.start(0)
+      GPIO.setup(led1, GPIO.OUT)
+      pwmLED = GPIO.PWM(led1, 100)
+      pwmLED.start(0)
       for dc in range(101):
-        channel.ChangeDutyCycle(dc)
+        pwmLED.ChangeDutyCycle(dc)
         sleep(.01)
+      pwmLED.stop()
 
     #make the led1 or led2 blink
       
@@ -44,7 +45,7 @@ try:
   #GPIO.add_event_detect(in2, GPIO.RISING, callback = partial(blinkLight, pwmLED2), bouncetime = 1000)
 
   while True:
-    blinkLight(pwmLED3)
+    blinkLight(led3)
     print('blinking')
 
     #GPIO Cleanup
@@ -53,9 +54,5 @@ except KeyboardInterrupt:
 except Exception as e:
     print('\n',e)
 
-
-pwmLED1.stop()
-pwmLED2.stop()
-pwmLED3.stop()
 GPIO.cleanup()
 
