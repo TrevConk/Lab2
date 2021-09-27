@@ -24,8 +24,8 @@ GPIO.setup(in2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 try:
 
   def blinkLight(channel):
-      GPIO.setup(led1, GPIO.OUT)
-      pwmLED = GPIO.PWM(led1, 100)
+      GPIO.setup(channel, GPIO.OUT)
+      pwmLED = GPIO.PWM(channel, 100)
       pwmLED.start(0)
       for dc in range(101):
         pwmLED.ChangeDutyCycle(dc)
@@ -35,12 +35,12 @@ try:
     #make the led1 or led2 blink
       
     #LED 1 Blinks
-  #GPIO.add_event_detect(in1, GPIO.RISING, callback = partial(blinkLight, pwmLED1), bouncetime = 1000)
+  GPIO.add_event_detect(in1, GPIO.RISING, callback = partial(blinkLight, led2), bouncetime = 1000)
     #LED 2 Blinks
-  #GPIO.add_event_detect(in2, GPIO.RISING, callback = partial(blinkLight, pwmLED2), bouncetime = 1000)
+  GPIO.add_event_detect(in2, GPIO.RISING, callback = partial(blinkLight, led3), bouncetime = 1000)
 
   while True:
-    blinkLight(led3)
+    blinkLight(led1)
     print('blinking')
 
     #GPIO Cleanup
