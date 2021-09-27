@@ -20,11 +20,6 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(in1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(in2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-#Setup the PWM For outputs
-
-pwmLED2 = GPIO.PWM(led2, 100)
-pwmLED3 = GPIO.PWM(led3, 100)
-
 
 try:
 
