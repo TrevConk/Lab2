@@ -27,13 +27,14 @@ pwmLED2 = GPIO.PWM(led2, 1)
 pwmLED3 = GPIO.PWM(led3, 1)
 
 
-def blinkLight(channel):
+try:
+
+  def blinkLight(channel):
       channel.start(0)
       for dc in range(101):
         channel.ChangeDutyCycle(dc)
         sleep(.01)
 
-try:
   while True:
     #make the led1 or led2 blink
       
