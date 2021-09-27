@@ -37,7 +37,7 @@ try:
     #LED 1 Blinks
   GPIO.add_event_detect(in1, GPIO.RISING, callback = partial(blinkLight, led2), bouncetime = 1000)
     #LED 2 Blinks
-  GPIO.add_event_detect(in2, GPIO.RISING, callback = partial(blinkLight, led2), bouncetime = 1000)
+  GPIO.add_event_detect(in2, GPIO.RISING, callback = partial(blinkLight, led3), bouncetime = 1000)
 
   while True:
     blinkLight(led1, 1)
