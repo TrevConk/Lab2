@@ -23,9 +23,9 @@ GPIO.setup(in1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(in2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 #Setup the PWM For outputs
-pwmLED1 = GPIO.PWM(led1, 1)
-pwmLED2 = GPIO.PWM(led2, 1)
-pwmLED3 = GPIO.PWM(led3, 1)
+pwmLED1 = GPIO.PWM(led1, 100)
+pwmLED2 = GPIO.PWM(led2, 100)
+pwmLED3 = GPIO.PWM(led3, 100)
 
 
 try:
@@ -39,9 +39,9 @@ try:
     #make the led1 or led2 blink
       
     #LED 1 Blinks
-  GPIO.add_event_detect(in1, GPIO.RISING, callback = partial(blinkLight, pwmLED1), bouncetime = 1000)
+  #GPIO.add_event_detect(in1, GPIO.RISING, callback = partial(blinkLight, pwmLED1), bouncetime = 1000)
     #LED 2 Blinks
-  GPIO.add_event_detect(in2, GPIO.RISING, callback = partial(blinkLight, pwmLED2), bouncetime = 1000)
+  #GPIO.add_event_detect(in2, GPIO.RISING, callback = partial(blinkLight, pwmLED2), bouncetime = 1000)
 
   while True:
     blinkLight(pwmLED3)
