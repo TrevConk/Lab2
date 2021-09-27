@@ -2,8 +2,11 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 #Setup the input ports
-led1, led2, led3 = 5, 6, 13
-in1, in2 = 16, 20
+led1 = 5
+led2 = 6
+led3 = 13
+in1 = 16
+in2 = 20
 f = 1 #frequency = 1
 
 #Setup the ports
